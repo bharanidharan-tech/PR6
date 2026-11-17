@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Background Position</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #eee;
+        }
+
+        .background {
+            height: 350px;
+            position: relative;
+            background-image: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .text {
+            position: absolute;
+            font-size: 25px;
+            color: black;
+            background: rgba(255,255,255,0.35);
+            padding: 10px;
+        }
+
+        .top-left { top: 0; left: 0; }
+        .top-right { top: 0; right: 0; }
+        .bottom-left { bottom: 0; left: 0; }
+        .bottom-right { bottom: 0; right: 0; }
+
+        .center {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        button {
+            background: #08a678;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            margin: 5px 2px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Example</h1>
+
+    <div class="background">
+        <div class="text top-left">Top Left</div>
+        <div class="text top-right">Top Right</div>
+        <div class="text bottom-left">Bottom Left</div>
+        <div class="text bottom-right">Bottom Right</div>
+        <div class="text center">Centered</div>
+    </div>
+
+    <h2>Try it Yourself:</h2>
+
+    <button onclick="move('top-left','Top Left')">Top Left »</button>
+    <button onclick="move('top-right','Top Right')">Top Right »</button>
+    <button onclick="move('bottom-left','Bottom Left')">Bottom Left »</button>
+    <button onclick="move('bottom-right','Bottom Right')">Bottom Right »</button>
+    <button onclick="move('center','Centered')">Centered »</button>
+
+    <script>
+        function move(position, name) {
+            let box = document.querySelector(".background");
+            let old = box.querySelector(".selected");
+
+            if (old) old.remove();
+
+            let text = document.createElement("div");
+            text.className = "text selected " + position;
+            text.innerText = name;
+            text.style.background =arguments[2]//rgba(255,255,255,0.35);
+            box.appendChild(text);
+        }
+    </script>
+
+</body>
+</html>
